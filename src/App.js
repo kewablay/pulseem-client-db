@@ -26,7 +26,7 @@ function App() {
   const udpateSmsStatRef = useRef(null);
   const udpateEmailStatRef = useRef(null);
 
-  const api = axios.create({ baseURL: "http://localhost:8000/" });
+  const api = axios.create({ baseURL: "https://clientapi.up.railway.app/" });
 
   useEffect(() => {
     async function fetchClients() {
@@ -367,59 +367,6 @@ function App() {
               ))}
             </tbody>
           </table>
-
-          {/* {clients.map((client) => (
-            <div class="client card">
-              <p>{client.name}</p>
-              <p>{client.email}</p>
-              <p>{client.cellPhone}</p>
-              <p>{client.smsStatus}</p>
-              <p>{client.emailStatus}</p>
-
-              <div class="actions">
-                <a
-                  href="#/"
-                  id="updateBtn"
-                  onClick={() =>
-                    handleUpdate(
-                      client._id,
-                      client.name,
-                      client.email,
-                      client.cellPhone,
-                      client.smsStatus,
-                      client.emailStatus
-                    )
-                  }
-                >
-                  <img src={updateImg} alt="update" />
-                </a>
-                <a
-                  href="#/"
-                  id="deleteBtn"
-                  onClick={() => deleteClient(client._id)}
-                >
-                  <img src={deleteImg} alt="delete" />
-                </a>
-              </div>
-            </div>
-          ))} */}
-          {/* <div class="client card">
-            <p>Kojo Kewa Junior</p>
-            <p>kojokewajunior123@gmail.com</p>
-            <p>0554378923</p>
-            <div class="actions">
-              <a
-                href="#/"
-                id="updateBtn"
-                onClick={() => setUpdateClicked(true)}
-              >
-                <img src={updateImg} alt="update" />
-              </a>
-              <a href="#/" id="deleteBtn">
-                <img src={deleteImg} alt="delete" />
-              </a>
-            </div>
-          </div> */}
         </div>
       </main>
     </div>

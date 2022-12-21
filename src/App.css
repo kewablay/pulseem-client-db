@@ -48,7 +48,7 @@ button {
   color: white;
   border-radius: 5px;
   position: absolute;
-  top: -20%;
+  top: 2%;
   right: 2%;
   opacity: 0;
   transform: all 0.3s ease;
