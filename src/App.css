@@ -271,14 +271,14 @@ table th.r {
     left: 10%;
     width: 80%;
   }
-  form > div label {
-    font-size: 12.5px;
-  }
   .actions a:last-child {
-    margin-left: 2rem;
+    margin-left: 1.5rem;
   }
-  form h2{
-    font-size: 15px;
+  form > div label {
+    font-size: 12px;
+  }
+  form > input:focus-visible, form > input:focus{
+    border: .2px solid grey;
   }
 
   table {
@@ -310,6 +310,7 @@ table th.r {
     width: 40%;
     left: 10px;
     top: 0;
+    padding-top: 12px;
   }
   table tbody tr td:nth-child(1):before {
     content: "Name";
