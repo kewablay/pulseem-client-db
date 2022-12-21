@@ -317,7 +317,58 @@ function App() {
 
         <div className="clientList">
           {/* card */}
-          {clients.map((client) => (
+          <table>
+            <thead>
+              <tr>
+                <th>Name</th>
+                <th>Email</th>
+                <th>Cell Phone</th>
+                <th>Email Status</th>
+                <th>Sms Status</th>
+                <th>Actions</th>
+              </tr>
+            </thead>
+            <tbody>
+              {clients.map((client) => (
+                <tr>
+                  <td>{client.name}</td>
+                  <td>{client.email}</td>
+                  <td>{client.cellPhone}</td>
+                  <td>{client.smsStatus}</td>
+                  <td>{client.emailStatus}</td>
+                  <td>
+                    <div class="actions">
+                      <a
+                        href="#/"
+                        id="updateBtn"
+                        onClick={() =>
+                          handleUpdate(
+                            client._id,
+                            client.name,
+                            client.email,
+                            client.cellPhone,
+                            client.smsStatus,
+                            client.emailStatus
+                          )
+                        }
+                      >
+                        <img src={updateImg} alt="update" />
+                      </a>
+                      <a
+                        href="#/"
+                        id="deleteBtn"
+                        onClick={() => deleteClient(client._id)}
+                      >
+                        <img src={deleteImg} alt="delete" />
+                      </a>
+                    </div>
+                  </td>
+                </tr>
+              ))}
+            </tbody>
+          </table>
+
+          {/* {clients.map((client) => (
             <div class="client card">
               <p>{client.name}</p>
               <p>{client.email}</p>
@@ -351,7 +402,7 @@ function App() {
                 </a>
               </div>
             </div>
-          ))}
+          ))} */}
           {/* <div class="client card">
             <p>Kojo Kewa Junior</p>
             <p>kojokewajunior123@gmail.com</p>

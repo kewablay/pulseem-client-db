@@ -90,26 +90,12 @@ button {
 
 .mainContent {
   padding: 3rem;
-  /* display: flex;
-  justify-content: center;
-  align-items: center; */
+  overflow-x: hidden;
+  overflow-y: scroll;
+  max-height: 97vh;
 }
 .header {
   margin: 2rem 0;
-}
-
-.card {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  border: 0.5px solid rgb(202, 202, 202);
-  padding: 1rem 1rem;
-  border-radius: 2px;
-  margin-bottom: 1rem;
-  transition: all 0.2s ease;
-}
-.card:hover {
-  background: rgb(245, 245, 245);
 }
 
 .actions a:last-child {
@@ -180,8 +166,8 @@ select {
   padding: 0.5rem 2rem;
 }
 
-.client {
-  /* max-width: 50rem; */
+.clientList {
+  overflow-x: scroll;
 }
 
 @media (max-width: 1104px) {
@@ -211,8 +197,9 @@ select {
     display: none;
   }
   .mainContent {
-    max-width: 80%;
+    max-width: 90%;
     margin: auto;
+    padding: 0;
   }
 }
 
@@ -222,4 +209,107 @@ select {
   }
 }
 
+/* table styles */
 
+table {
+  border-spacing: 1;
+  border-collapse: collapse;
+  background: rgb(250, 249, 249);
+  /* box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px; */
+  z-index: 0;
+  border-radius: 6px;
+  overflow: hidden;
+  /* max-width: 800px; */
+  width: 100%;
+  margin: 0 auto;
+  position: relative;
+}
+table * {
+  position: relative;
+}
+table td,
+table th {
+  padding: 10px;
+}
+table thead tr {
+  height: 60px;
+  background: rgb(215, 228, 233);
+  font-size: 16px;
+}
+table tbody tr {
+  height: 60px;
+  border-bottom: 1px solid #a9aca5;
+}
+table tbody tr:last-child {
+  border: 0;
+}
+table td,
+table th {
+  text-align: left;
+}
+table td.l,
+table th.l {
+  text-align: right;
+}
+table td.c,
+table th.c {
+  text-align: center;
+}
+table td.r,
+table th.r {
+  text-align: center;
+}
+@media screen and (max-width: 35.5em) {
+  .mainContent{
+    height: 100vh;
+  }
+  table {
+    display: block;
+  }
+  table > *,
+  table tr,
+  table td,
+  table th {
+    display: block;
+  }
+  table thead {
+    display: none;
+  }
+  table tbody tr {
+    height: auto;
+    padding: 10px 0;
+  }
+  table tbody tr td {
+    padding-left: 45%;
+    margin-bottom: 12px;
+  }
+  table tbody tr td:last-child {
+    margin-bottom: 0;
+  }
+  table tbody tr td:before {
+    position: absolute;
+    font-weight: 700;
+    width: 40%;
+    left: 10px;
+    top: 0;
+  }
+  table tbody tr td:nth-child(1):before {
+    content: "Name";
+  }
+  table tbody tr td:nth-child(2):before {
+    content: "Email";
+  }
+  table tbody tr td:nth-child(3):before {
+    content: "Cell Phone";
+  }
+  table tbody tr td:nth-child(4):before {
+    content: "Email Status";
+  }
+  table tbody tr td:nth-child(5):before {
+    content: "Sms Status";
+  }
+  table tbody tr td:nth-child(6):before {
+    content: "Actions";
+  }
+
+}
