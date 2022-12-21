@@ -75,8 +75,8 @@ function App() {
   };
   // console.log("individual client", client);
 
-  const submitUpdate = (id, num) => {
-    // e.preventDefault();
+  const submitUpdate = (e, id, num) => {
+    e.preventDefault();
     const name = udpateNameRef.current.value;
     const email = udpateEmailRef.current.value;
     const phone = udpatePhoneRef.current.value;
@@ -240,7 +240,7 @@ function App() {
                   className="btn"
                   type="submit"
                   value="Submit"
-                  onClick={() => submitUpdate(client[0].id, client[0].number)}
+                  onClick={(e) => submitUpdate(client[0].id, client[0].number)}
                 />
               </div>
             </form>
