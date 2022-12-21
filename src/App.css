@@ -264,6 +264,14 @@ table th.r {
   .mainContent {
     height: 100vh;
   }
+  .addClientModal,
+  .updateClientModal {
+    position: absolute;
+    top: 25%;
+    left: 10%;
+    width: 80%;
+  }
+
   table {
     display: block;
   }
