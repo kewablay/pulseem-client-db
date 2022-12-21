@@ -130,7 +130,9 @@ function App() {
 
   // Delete
   const deleteClient = async (id) => {
-    console.log("delete clicked  id:", id);
+    // console.log("delete clicked  id:", id);
+    alert("Client will be permanently removed. Continue?");
+
     await api
       .delete(`/clients/${id}`)
       .then((res) => {
