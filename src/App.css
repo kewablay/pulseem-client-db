@@ -90,6 +90,7 @@ button {
 
 .mainContent {
   padding: 3rem;
+  padding-top: 1rem;
   overflow-x: hidden;
   overflow-y: scroll;
   max-height: 97vh;
@@ -260,7 +261,7 @@ table th.r {
   text-align: center;
 }
 @media screen and (max-width: 35.5em) {
-  .mainContent{
+  .mainContent {
     height: 100vh;
   }
   table {
@@ -311,5 +312,4 @@ table th.r {
   table tbody tr td:nth-child(6):before {
     content: "Actions";
   }
-
 }
