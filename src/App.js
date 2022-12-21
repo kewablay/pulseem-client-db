@@ -75,8 +75,8 @@ function App() {
   };
   // console.log("individual client", client);
 
-  const submitUpdate = (e, id, num) => {
-    e.preventDefault();
+  const submitUpdate = (id, num) => {
+    // e.preventDefault();
     const name = udpateNameRef.current.value;
     const email = udpateEmailRef.current.value;
     const phone = udpatePhoneRef.current.value;
@@ -130,8 +130,7 @@ function App() {
 
   // Delete
   const deleteClient = async (id) => {
-    // console.log("delete clicked  id:", id);
-    prompt("Client will be permanently removed. Continue?");
+    console.log("delete clicked  id:", id);
     await api
       .delete(`/clients/${id}`)
       .then((res) => {
@@ -240,7 +239,7 @@ function App() {
                   className="btn"
                   type="submit"
                   value="Submit"
-                  onClick={(e) => submitUpdate(client[0].id, client[0].number)}
+                  onClick={() => submitUpdate(client[0].id, client[0].number)}
                 />
               </div>
             </form>
