@@ -1,38 +1,225 @@
-.App {
+/* global styling */
+a {
+  text-decoration: none;
+}
+button {
+  border: none;
+  background: transparent;
+}
+
+:root {
+  --text-100: 10px;
+  --text-200: 12px;
+  --text-300: 15px;
+  --text-400: 35px;
+
+  --space-100: 1rem;
+  --space-200: 2rem;
+
+  --gradient: 180deg, #b014bd 0%, rgba(20, 68, 189, 0.420716) 57.93%,
+    #ded1fb 100%;
+  --btn-gradient: linear-gradient(90.84deg, #e82f77 20.64%, #9063ce 71.94%);
+}
+
+/* utility classes */
+.grid {
+  display: grid !important;
+  grid-template-columns: 30% 70%;
+}
+.flex-center {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.flex-between {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.mb-1 {
+  margin-bottom: 1.5rem;
+}
+.title {
+  font-size: var(--text-400);
+}
+.prompt {
+  background: green;
+  padding: 0.5rem 1.2rem;
+  color: white;
+  border-radius: 5px;
+  position: absolute;
+  top: -20%;
+  right: 2%;
+  opacity: 0;
+  transform: all 0.3s ease;
+}
+.text-center {
   text-align: center;
 }
-
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
-}
-
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
-}
-
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
+.btn {
+  background: var(--btn-gradient);
+  padding: 0.5rem 0.8rem;
   color: white;
+  font-weight: medium;
+  opacity: 0.8;
+  transition: all 0.2s ease;
+}
+.btn:hover {
+  opacity: 1;
 }
 
-.App-link {
-  color: #61dafb;
+/* sidebar styles */
+.logo {
+  position: absolute;
+  top: 2%;
+  left: 2%;
+}
+.sidebar {
+  background: linear-gradient(var(--gradient));
+  overflow: hidden;
+  flex-direction: column;
+  height: 100vh;
 }
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
+.illustration,
+.illustration img {
+  width: 100%;
+}
+
+/* maincontent section */
+
+.mainContent {
+  padding: 3rem;
+  /* display: flex;
+  justify-content: center;
+  align-items: center; */
+}
+.header {
+  margin: 2rem 0;
+}
+
+.card {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border: 0.5px solid rgb(202, 202, 202);
+  padding: 1rem 1rem;
+  border-radius: 2px;
+  margin-bottom: 1rem;
+  transition: all 0.2s ease;
+}
+.card:hover {
+  background: rgb(245, 245, 245);
+}
+
+.actions a:last-child {
+  margin-left: 0.5rem;
+}
+.actions a {
+  cursor: pointer;
+}
+button img {
+  transition: all 0.2s ease;
+  opacity: 0.7;
+}
+.actions button:hover img {
+  transform: scale(1.15);
+  opacity: 1;
+}
+
+/* modal styling */
+.addClientModal,
+.updateClientModal {
+  position: absolute;
+  top: 25%;
+  left: 40%;
+  width: 30rem;
+  /* height: 80rem; */
+  padding: 2rem;
+  box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
+  z-index: 1;
+  box-sizing: border-box !important;
+  background: white;
+  transition: all 0.3s ease;
+}
+.modal {
+  box-sizing: border-box;
+}
+#close {
+  font-weight: bold;
+  font-size: 20px;
+  position: absolute;
+  right: 5%;
+  top: 5%;
+  cursor: pointer;
+}
+form > div {
+  display: flex;
+  gap: 1rem;
+  align-items: center;
+  margin-bottom: 1rem;
+}
+form > div label {
+  flex-basis: 20%;
+}
+.modal input:not(input[type="submit"]),
+select {
+  padding: 0.8rem;
+  border: 0.1px solid rgb(212, 212, 212) !important;
+  width: 100%;
+  height: 100%;
+}
+.modal option {
+  border-radius: 0;
+  border-radius: none;
+}
+
+.modal input[type="submit"] {
+  font-family: "Montserrat";
+  font-size: var(--text-300);
+  padding: 0.5rem 2rem;
+}
+
+.client {
+  /* max-width: 50rem; */
+}
+
+@media (max-width: 1104px) {
+  .client p {
+    font-size: 13px;
   }
-  to {
-    transform: rotate(360deg);
+  button img {
+    width: 15px;
+    height: 12px;
+  }
+  button img:last-child {
+    width: 11px;
   }
 }
+
+@media (max-width: 992px) {
+  .actions button:last-child {
+    margin-left: 0;
+  }
+}
+
+@media (max-width: 921px) {
+  .grid {
+    display: block !important;
+  }
+  .sidebar {
+    display: none;
+  }
+  .mainContent {
+    max-width: 80%;
+    margin: auto;
+  }
+}
+
+@media (max-width: 768px) {
+  .mainContent {
+    max-width: 90%;
+  }
+}
+
+
