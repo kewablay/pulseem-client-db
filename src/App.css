@@ -43,15 +43,21 @@ button {
   font-size: var(--text-400);
 }
 .prompt {
-  background: green;
   padding: 0.5rem 1.2rem;
   color: white;
   border-radius: 5px;
-  position: absolute;
-  top: 2%;
+  position: fixed;
+  bottom: 2%;
   right: 2%;
-  opacity: 0;
   transform: all 0.3s ease;
+  z-index: 2;
+}
+.error {
+  background: red;
+  opacity: 1;
+}
+.success {
+  background: green;
 }
 .text-center {
   text-align: center;
@@ -105,11 +111,11 @@ button {
 .actions a {
   cursor: pointer;
 }
-button img {
+a img {
   transition: all 0.2s ease;
   opacity: 0.7;
 }
-.actions button:hover img {
+.actions a:hover img {
   transform: scale(1.15);
   opacity: 1;
 }
@@ -175,20 +181,8 @@ select {
   .client p {
     font-size: 13px;
   }
-  button img {
-    width: 15px;
-    height: 12px;
-  }
-  button img:last-child {
-    width: 11px;
-  }
 }
 
-@media (max-width: 992px) {
-  .actions button:last-child {
-    margin-left: 0;
-  }
-}
 
 @media (max-width: 921px) {
   .grid {
@@ -271,14 +265,18 @@ table th.r {
     left: 10%;
     width: 80%;
   }
+  .updateClientModal {
+    top: 20%;
+  }
   .actions a:last-child {
     margin-left: 1.5rem;
   }
   form > div label {
     font-size: 12px;
   }
-  form > input:focus-visible, form > input:focus{
-    border: .2px solid grey;
+  form > input:focus-visible,
+  form > input:focus {
+    border: 0.2px solid grey;
   }
 
   table {

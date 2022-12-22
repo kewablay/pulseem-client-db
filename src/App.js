@@ -10,9 +10,13 @@ function App() {
   const [updateClicked, setUpdateClicked] = useState(false);
   const [addClicked, setAddClicked] = useState(false);
   const [clients, setClients] = useState([]);
-  const [postSuccess, setPostSuccess] = useState(false);
   const [request, setRequest] = useState(false);
   const [client, setClient] = useState([]);
+  const [message, setMessage] = useState("");
+  const [postSuccess, setPostSuccess] = useState(false);
+  const [deleteSuccess, setDeleteSuccess] = useState(false);
+  const [error, setError] = useState(false);
+  const [prompt, setPrompt] = useState(false);
 
   // add new client input Refs
   const nameRef = useRef(null);
@@ -39,6 +43,7 @@ function App() {
     fetchClients();
   }, [postSuccess, request]);
 
+  // Post
   async function postData(name, email, phone) {
     const request = await api
       .post("/clients", {
@@ -50,6 +55,14 @@ function App() {
         console.log(res);
         setPostSuccess(true);
         setAddClicked(false);
+        setPrompt(true);
+        setMessage("Client added Succesfully");
+      })
+      .catch((err) => {
+        console.log(err);
+        setMessage("Name, Email or Phone already exist");
+        setError(true);
+        setPrompt(true);
       });
   }
 
@@ -102,7 +115,11 @@ function App() {
           console.log(res.data);
           setRequest(!request);
         })
-        .catch((err) => console.log(err.data.message));
+        .catch((err) => {
+          setMessage(err.message);
+          setError(true);
+          setPrompt(true);
+        });
     }
 
     // console.log("update id: ", id);
@@ -122,7 +139,11 @@ function App() {
           setRequest(!request);
           setUpdateClicked(false);
         })
-        .catch((err) => console.log(err.message));
+        .catch((err) => {
+          setMessage(err.message);
+          setError(true);
+          setPrompt(true);
+        });
     }
 
     UpdateClient(id);
@@ -138,9 +159,15 @@ function App() {
       .then((res) => {
         console.log(res);
         setRequest(!request);
+        setPrompt(true);
+        setMessage("Client Deleted");
+        setDeleteSuccess(true);
       })
       .catch((err) => {
-        console.log(err.message);
+        console.log("error: ", err.message);
+        setMessage(err.message);
+        setError(true);
+        setPrompt(true);
       });
     // setSuccess(false);
   };
@@ -158,16 +185,16 @@ function App() {
       </aside>
 
       <main className="mainContent">
-        <p
-          className="prompt"
-          style={postSuccess ? { opacity: 1, top: "2%" } : {}}
-        >
-          Client added successfully
-        </p>
-        {postSuccess &&
+        {prompt &&
           setTimeout(() => {
             setPostSuccess(false);
-          }, 2000)}
+            setDeleteSuccess(false);
+            setError(false);
+          }, 2500)}
+        {postSuccess && <p className="prompt success">{message}</p>}
+        {deleteSuccess && <p className="prompt success">{message}</p>}
+        {error && <p className="prompt error">{message}</p>}
+
         {updateClicked && (
           <div className="updateClientModal" data-update-modal>
             <button id="close" onClick={() => setUpdateClicked(false)}>
@@ -261,6 +288,7 @@ function App() {
                   type="text"
                   id="name"
                   placehodler="Enter name "
+                  required
                   ref={nameRef}
                 />
               </div>
