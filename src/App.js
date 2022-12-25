@@ -353,8 +353,8 @@ function App() {
                 <th>Name</th>
                 <th>Email</th>
                 <th>Cell Phone</th>
-                <th>Email Status</th>
                 <th>Sms Status</th>
+                <th>Email Status</th>
                 <th>Actions</th>
               </tr>
             </thead>
