@@ -4,6 +4,7 @@ import illustration from "./assets/illustration.png";
 import logo from "./assets/logo.png";
 import updateImg from "./assets/update.png";
 import deleteImg from "./assets/delete.png";
+import Loading from "./assets/loading.gif";
 import axios from "axios";
 
 function App() {
@@ -15,8 +16,10 @@ function App() {
   const [message, setMessage] = useState("");
   const [postSuccess, setPostSuccess] = useState(false);
   const [deleteSuccess, setDeleteSuccess] = useState(false);
+  const [updateSuccess, setUpdateSuccess] = useState(false);
   const [error, setError] = useState(false);
   const [prompt, setPrompt] = useState(false);
+  const [loading, setLoading] = useState(false);
 
   // add new client input Refs
   const nameRef = useRef(null);
@@ -64,11 +67,13 @@ function App() {
         setError(true);
         setPrompt(true);
       });
+    setLoading(false);
   }
 
   // submit
   const handleSubmit = (e) => {
     e.preventDefault();
+    setLoading(true);
     const name = nameRef.current.value;
     const email = emailRef.current.value;
     const phone = phoneRef.current.value;
@@ -90,6 +95,7 @@ function App() {
 
   const submitUpdate = (id, num) => {
     // e.preventDefault();
+    setLoading(true);
     const name = udpateNameRef.current.value;
     const email = udpateEmailRef.current.value;
     const phone = udpatePhoneRef.current.value;
@@ -120,6 +126,7 @@ function App() {
           setError(true);
           setPrompt(true);
         });
+      setLoading(false);
     }
 
     // console.log("update id: ", id);
@@ -136,14 +143,18 @@ function App() {
         })
         .then((res) => {
           console.log(res.data);
+          setPrompt(true);
+          setUpdateSuccess(true);
           setRequest(!request);
           setUpdateClicked(false);
+          setMessage("Successful");
         })
         .catch((err) => {
           setMessage(err.message);
           setError(true);
           setPrompt(true);
         });
+      setLoading(false);
     }
 
     UpdateClient(id);
@@ -189,10 +200,12 @@ function App() {
           setTimeout(() => {
             setPostSuccess(false);
             setDeleteSuccess(false);
+            setUpdateSuccess(false);
             setError(false);
           }, 2500)}
         {postSuccess && <p className="prompt success">{message}</p>}
         {deleteSuccess && <p className="prompt success">{message}</p>}
+        {updateSuccess && <p className="prompt success">{message}</p>}
         {error && <p className="prompt error">{message}</p>}
 
         {updateClicked && (
@@ -267,7 +280,7 @@ function App() {
                 <input
                   className="btn"
                   type="submit"
-                  value="Submit"
+                  value={loading ? "Loading..." : "Submit"}
                   onClick={() => submitUpdate(client[0].id, client[0].number)}
                 />
               </div>
@@ -317,7 +330,7 @@ function App() {
                 <input
                   className="btn"
                   type="submit"
-                  value="Submit"
+                  value={loading ? "Loading..." : "Submit"}
                   required
                   onClick={handleSubmit}
                 />

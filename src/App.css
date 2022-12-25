@@ -73,6 +73,10 @@ button {
 .btn:hover {
   opacity: 1;
 }
+#loading{
+  width: 50px;
+  height: 20px;
+}
 
 /* sidebar styles */
 .logo {
@@ -182,7 +186,6 @@ select {
     font-size: 13px;
   }
 }
-
 
 @media (max-width: 921px) {
   .grid {
@@ -320,10 +323,10 @@ table th.r {
     content: "Cell Phone";
   }
   table tbody tr td:nth-child(4):before {
-    content: "Email Status";
+    content: "Sms Status";
   }
   table tbody tr td:nth-child(5):before {
-    content: "Sms Status";
+    content: "Email Status";
   }
   table tbody tr td:nth-child(6):before {
     content: "Actions";
